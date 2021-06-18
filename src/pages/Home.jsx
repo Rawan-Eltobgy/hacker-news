@@ -67,7 +67,7 @@ function Home() {
         <button> Search </button>
       </form>
       <div className={styles.Home__errorContainer}>
-        <span style={{ color: "red" }}>{inputError}</span>
+        <span style={{ color: "red" }}>{inputError || error}</span>
       </div>
       {status === "fetching" ? (
         <Loader type="Puff" color="#00BFFF" height={100} width={100} />

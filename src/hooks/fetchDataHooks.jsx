@@ -46,12 +46,14 @@ export const useFetch = (url, detailsUrl, storiesNumber = 10) => {
         const scores = [],
           descendantsArr = [];
         const data = await fetchStoriesIds();
+        if (!!data.error)  throw new Error('Error while fetching data, please try again');
         await Promise.all([
-          ...data.map(async function (item, index) {
+          ...data?.map(async function (item, index) {
             if (index >= storiesNumber) return;
             const storyURL = item && `${detailsUrl}${item}.json?print=pretty`;
             const response = await fetch(storyURL);
             const story = await response.json();
+            if (!!story.error)  throw new Error('Error while fetching one of the stories, please try again');
             const { score, descendants } = story;
             scores.push(Number(score));
             descendantsArr.push(Number(descendants));
