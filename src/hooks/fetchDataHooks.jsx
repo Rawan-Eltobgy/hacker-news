@@ -1,8 +1,6 @@
 import { useEffect, useRef, useReducer } from "react";
 
-export const useFetch = (url, storiesNumber = 10) => {
-  const cache = useRef({});
-
+export const useFetch = (url, detailsUrl, storiesNumber = 10) => {
   const initialState = {
     status: "idle",
     error: null,
@@ -32,36 +30,33 @@ export const useFetch = (url, storiesNumber = 10) => {
     }
   }, initialState);
 
-  const fetchStoriesIds = async()=>{
-        const response = await fetch(url);
-        const data = await response.json();
-        return data
-  }
+  const fetchStoriesIds = async () => {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  };
 
   useEffect(() => {
     let cancelRequest = false;
-    if (!url) return;
+    if (!url || !detailsUrl) return;
 
     const fetchData = async () => {
       dispatch({ type: "FETCHING" });
       try {
         const scores = [],
           descendantsArr = [];
-        const data = await fetchStoriesIds()
-        // cache.current[url] = data;
-        // if (cancelRequest) return;
-        // dispatch({ type: 'FETCHED', payload: data });
-        await Promise.all([...data.map((async function (item, index) {
+        const data = await fetchStoriesIds();
+        await Promise.all([
+          ...data.map(async function (item, index) {
             if (index >= storiesNumber) return;
-            const storyURL =
-              item &&
-              `https://hacker-news.firebaseio.com/v0/item/${item}.json?print=pretty`;
+            const storyURL = item && `${detailsUrl}${item}.json?print=pretty`;
             const response = await fetch(storyURL);
             const story = await response.json();
             const { score, descendants } = story;
-            scores.push(Number(score));  
+            scores.push(Number(score));
             descendantsArr.push(Number(descendants));
-          }))])
+          }),
+        ]);
         dispatch({
           type: "FETCHED DETAILS",
           payload: { data: data, scores: scores, descendants: descendantsArr },
