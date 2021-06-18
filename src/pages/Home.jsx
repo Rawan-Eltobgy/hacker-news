@@ -51,7 +51,6 @@ function Home() {
       setInputError("");
     }
   };
-  console.log("status: ", status);
   return (
     <div className={styles.Home}>
       <form onSubmit={handleSubmit}>
