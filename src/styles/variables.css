@@ -1,0 +1,50 @@
+:root {
+    --color-blue: #0c77f8;
+    --color-red: #ff0000;
+    --color-green: #aaf200;
+    --color-white: #ffffff;
+    --color-black: #ffffff00;
+    --color-blue-pacific: #00A3BE;
+    --color-blue-lagoon: #05778F;
+    --color-catskill-white: #F9FAFC;
+    --color-athens-gray: #ECEEF4;
+    --color-blue-haze: #CCD0E0;
+    --color-slate-gray: #6E7492;
+    --color-mirage: #191D2F;
+    --color-shadow: #6E7492;
+    --color-gray: #828282;
+    --color-disabled: #C4C4C4;
+    /* spacing values */
+    /* 4px -> 025rem */
+    --space-unit: 0.25rem;
+    --space-5: calc(1* var(--space-unit));
+    /* 4px */
+    --space-10: calc(2 * var(--space-unit));
+    /* 8px  */
+    --space-15: calc(3 * var(--space-unit));
+    /* 12px  */
+    --space-20: calc(4 * var(--space-unit));
+    /* 16px */
+    --space-25: calc(5 * var(--space-unit));
+    /* 20px  */
+    --space-30: calc(6 * var(--space-unit));
+    /* 24px */
+    --space-35: calc(7 * var(--space-unit));
+    /* 28px */
+    --space-40: calc(8 * var(--space-unit));
+    /* 32px */
+    --space-45: calc(9 * var(--space-unit));
+    /* 36px */
+    --space-50: calc(10 * var(--space-unit));
+    /* 40px */
+    --space-55: calc(11 * var(--space-unit));
+    /* 44px */
+    --space-60: calc(12 * var(--space-unit));
+    /* 48px */
+    --space-60: calc(16 * var(--space-unit));
+    /* 60px */
+    /* Font Sizes */
+    --font-size-small: calc(3 * var(--space-unit));
+    --font-size-medium: calc(4 * var(--space-unit));
+    --font-size-large: calc(4.5 * var(--space-unit));
+}
