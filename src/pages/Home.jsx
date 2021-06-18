@@ -51,6 +51,7 @@ function Home() {
       setInputError("");
     }
   };
+  
   return (
     <div className={styles.Home}>
       <form onSubmit={handleSubmit}>
@@ -72,7 +73,7 @@ function Home() {
         <Loader type="Puff" color="#00BFFF" height={100} width={100} />
       ) : (
         <Line
-          data={chartData}
+          data={chartData}     
         />
       )}
     </div>

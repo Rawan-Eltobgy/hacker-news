@@ -1,4 +1,4 @@
-import { useEffect, useRef, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 
 export const useFetch = (url, detailsUrl, storiesNumber = 10) => {
   const initialState = {
